@@ -1,9 +1,9 @@
-function mergeStrings(s1 : string, s2 : string) {
+//check strict mode::::::::::::::::::::::::::::::::::::::::::::::::::
+function mergeStrings(s1: string, s2: string) {
   //Count occurrences of characters in each string
-  const countStr1 = getCount(s1);
-  const countStr2 = getCount(s2);
+  const countStr1: {      [key: string]: number } = getCount(s1);
+  const countStr2: { [key: string]: number } = getCount(s2);
   let result = "";
-
   // Merge strings based on merge function rules
   let i = 0,
     j = 0;
@@ -11,8 +11,8 @@ function mergeStrings(s1 : string, s2 : string) {
     const char1 = s1[i];
     const char2 = s2[j];
 
-    const count1 = countStr1[char1];
-    const count2 = countStr2[char2];
+    const count1: number = countStr1[char1];
+    const count2: number = countStr2[char2];
 
     if (count1 < count2 || (count1 === count2 && char1 <= char2)) {
       result += char1;
@@ -29,8 +29,8 @@ function mergeStrings(s1 : string, s2 : string) {
 }
 
 //count the occurrences of charactor in the string
-function getCount(str : string) {
-  const countNum = {};
+function getCount(str: string): { [key: string]: number } {
+  const countNum: { [key: string]: number } = {};
   for (const char of str) {
     if (countNum[char]) {
       countNum[char]++;
@@ -45,5 +45,3 @@ function getCount(str : string) {
 const s1 = "dce";
 const s2 = "cccbd";
 console.log(mergeStrings(s1, s2));
-
-
